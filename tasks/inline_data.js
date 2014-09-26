@@ -15,11 +15,10 @@ module.exports = function(grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('inline_data', 'The best Grunt plugin ever.', function() {
+    grunt.registerMultiTask('inline_data', 'inline data in any file', function() {
         // Merge task-specific and/or target-specific options with these defaults.
         var files = this.filesSrc,
             options = this.options({
-                tag: '__inline',
                 punctuation: '.',
                 separator: ', '
             }),
@@ -27,14 +26,14 @@ module.exports = function(grunt) {
 
         // Iterate over all specified file groups.
         files.forEach(function (filepath) {
-            var fileType = path.extname(filepath).replace(/^\./, '');
-            var fileContent = grunt.file.read(filepath);
+            var fileType = path.extname(filepath).replace(/^\./, ''),
+                fileContent = grunt.file.read(filepath),
+                destFile = getPathToDestination(filepath, dest);
 
             grunt.log.write('Processing ' + filepath + '...');
 
             fileContent = inline(filepath, fileContent);
 
-            var destFile = getPathToDestination(filepath, dest);
             
 
             grunt.file.write(destFile, fileContent);
@@ -57,25 +56,22 @@ module.exports = function(grunt) {
 
     /**
      * @describe getinline message
-     * @param {}
-     * @param {}
+     * @param {filepath}
+     * @param {fileContent}
+     * @return {fileContent}
      */
     function inline(filepath, fileContent){
         var flags = fileContent.match(/__inline\(([\s\S]*?)\)/g),
-            thisfileDir = path.dirname(filepath);
-
+            inlinefileDir = path.dirname(filepath);
 
         flags.forEach(function (fa){
-            var inlinePath = fa.match(/\(([\s\S]*?)\)/)[1];
+            var inlineFile = fa.match(/\(([\s\S]*?)\)/)[1];
 
-            var inlineContent = grunt.file.read(thisfileDir + '/' + inlinePath);
-
-                
+            var inlineContent = grunt.file.read(inlinefileDir + '/' + inlineFile);
 
             fileContent = fileContent.replace(fa, inlineContent);
 
         });
-
 
         return fileContent;
     }
