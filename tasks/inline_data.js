@@ -1,6 +1,6 @@
 /*
- * grunt-inline-src
- * https://github.com/xiaokai/grunt-inline-src
+ * grunt-inline-data
+ * https://github.com/xiaokai/grunt-inline-data
  *
  * Copyright (c) 2014 xiaokai
  * Licensed under the MIT license.
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('inline_src', 'The best Grunt plugin ever.', function() {
+    grunt.registerMultiTask('inline_data', 'The best Grunt plugin ever.', function() {
         // Merge task-specific and/or target-specific options with these defaults.
         var files = this.filesSrc,
             options = this.options({

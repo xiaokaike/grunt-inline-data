@@ -1,4 +1,4 @@
-# grunt-inline-src
+# grunt-inline-data
 
 
 
