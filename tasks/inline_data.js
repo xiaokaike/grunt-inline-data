@@ -34,8 +34,6 @@ module.exports = function(grunt) {
 
             fileContent = inline(filepath, fileContent);
 
-            
-
             grunt.file.write(destFile, fileContent);
             grunt.log.ok();
         });
