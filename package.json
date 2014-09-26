@@ -1,23 +1,23 @@
 {
-  "name": "grunt-inline-source",
+  "name": "grunt-inline-src",
   "description": "The best Grunt plugin ever.",
   "version": "0.1.0",
-  "homepage": "https://github.com/xiaokaike/grunt-inline-source",
+  "homepage": "https://github.com/xiaokaike/grunt-inline-src",
   "author": {
     "name": "xiaokai",
     "email": "kexiaokai@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/xiaokaike/grunt-inline-source.git"
+    "url": "git://github.com/xiaokaike/grunt-inline-src.git"
   },
   "bugs": {
-    "url": "https://github.com/xiaokaike/grunt-inline-source/issues"
+    "url": "https://github.com/xiaokaike/grunt-inline-src/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/xiaokaike/grunt-inline-source/blob/master/LICENSE-MIT"
+      "url": "https://github.com/xiaokaike/grunt-inline-src/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {

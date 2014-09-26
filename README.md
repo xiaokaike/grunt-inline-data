@@ -1,4 +1,4 @@
-# grunt-inline-source
+# grunt-inline-src
 
 > The best Grunt plugin ever.
 
@@ -8,23 +8,23 @@ This plugin requires Grunt `~0.4.5`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-inline-source --save-dev
+npm install grunt-inline-src --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-inline-source');
+grunt.loadNpmTasks('grunt-inline-src');
 ```
 
-## The "inline_source" task
+## The "inline_src" task
 
 ### Overview
-In your project's Gruntfile, add a section named `inline_source` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `inline_src` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  inline_source: {
+  inline_src: {
     options: {
       // Task-specific options go here.
     },
@@ -56,7 +56,7 @@ In this example, the default options are used to do something with whatever. So 
 
 ```js
 grunt.initConfig({
-  inline_source: {
+  inline_src: {
     options: {},
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
@@ -70,7 +70,7 @@ In this example, custom options are used to do something else with whatever else
 
 ```js
 grunt.initConfig({
-  inline_source: {
+  inline_src: {
     options: {
       separator: ': ',
       punctuation: ' !!!',
