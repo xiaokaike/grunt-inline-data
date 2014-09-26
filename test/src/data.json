@@ -1,0 +1,27 @@
+{
+    "data": [{
+        "title": "头条热点",
+        "url": "news",
+        "icon": "http://zkres.myzaker.com/data/image/logo_for_web/660.png"
+    },{
+        "title": "汽车频道",
+        "url": "car",
+        "icon": "http://zkres.myzaker.com/data/image/logo_for_web/7.png"
+    },{
+        "title": "科技频道",
+        "url": "tech",
+        "icon": "http://zkres.myzaker.com/data/image/logo_for_web/13.png"
+    },{
+        "title": "国内资讯",
+        "url": "civil",
+        "icon": "http://zkres.myzaker.com/data/image/logo_for_web/1.png"
+    },{
+        "title": "头条热点",
+        "url": "news",
+        "icon": "http://zkres.myzaker.com/data/image/logo_for_web/660.png"
+    },{
+        "title": "头条热点",
+        "url": "news",
+        "icon": "http://zkres.myzaker.com/data/image/logo_for_web/660.png"
+    }]
+}

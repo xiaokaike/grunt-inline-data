@@ -1,5 +1,7 @@
 
 
-var style = '__inline(base.css)';
+var style = '__inline(../dist/base.min.css)';
 
-var style = '__inline(inner.tpl)';
+var style = '__inline(../dist/inner.min.tpl)';
+
+var data = __inline(data.json);

@@ -32,8 +32,6 @@ module.exports = function(grunt) {
 
             grunt.log.write('Processing ' + filepath + '...');
 
-            console.log(fileContent);
-
             fileContent = inline(filepath, fileContent);
 
             var destFile = getPathToDestination(filepath, dest);
@@ -59,22 +57,22 @@ module.exports = function(grunt) {
 
     /**
      * @describe getinline message
+     * @param {}
+     * @param {}
      */
     function inline(filepath, fileContent){
-        // 'fdsfsd__inline(dddd.data)'.match(/__inline\(([\s\S]*?)\)/)
         var flags = fileContent.match(/__inline\(([\s\S]*?)\)/g),
             thisfileDir = path.dirname(filepath);
 
-        console.log(flags);
 
         flags.forEach(function (fa){
             var inlinePath = fa.match(/\(([\s\S]*?)\)/)[1];
 
             var inlineContent = grunt.file.read(thisfileDir + '/' + inlinePath);
 
-            fileContent = fileContent.replace(fa, inlineContent);
+                
 
-            console.log(fileContent);
+            fileContent = fileContent.replace(fa, inlineContent);
 
         });
 
