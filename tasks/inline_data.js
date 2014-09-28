@@ -62,14 +62,17 @@ module.exports = function(grunt) {
         var flags = fileContent.match(/__inline\(([\s\S]*?)\)/g),
             inlinefileDir = path.dirname(filepath);
 
-        flags.forEach(function (fa){
-            var inlineFile = fa.match(/\(([\s\S]*?)\)/)[1];
+        if(flags && flags.length > 0){
 
-            var inlineContent = grunt.file.read(inlinefileDir + '/' + inlineFile);
+            flags.forEach(function (fa){
+                var inlineFile = fa.match(/\(([\s\S]*?)\)/)[1];
 
-            fileContent = fileContent.replace(fa, inlineContent);
+                var inlineContent = grunt.file.read(inlinefileDir + '/' + inlineFile);
 
-        });
+                fileContent = fileContent.replace(fa, inlineContent);
+
+            });
+        }
 
         return fileContent;
     }
