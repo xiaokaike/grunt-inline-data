@@ -64,7 +64,7 @@ module.exports = function(grunt) {
                 cwd: 'test/src/',
                 src: ['*.js'],
                 dest: 'tmp/',
-                ext: '.min.js'
+                ext: '.inline.js'
             }
         },
 
