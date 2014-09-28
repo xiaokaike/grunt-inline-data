@@ -60,8 +60,8 @@ module.exports = function(grunt) {
         // Configuration to be run (and then tested).
         inline_data: {
             dist: {
-                src: ['test/src/app.js'],
-                dest: ['tmp/appinline.js']
+                src: ['test/src/app.js', 'test/src/noinline.js'],
+                dest: ['tmp/']
             }
         },
 
