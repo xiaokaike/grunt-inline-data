@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('inline_data', 'inline data in any file', function() {
+    grunt.registerMultiTask('inlinedata', 'inline data in any file', function() {
         // Merge task-specific and/or target-specific options with these defaults.
         var files = this.filesSrc,
             options = this.options({

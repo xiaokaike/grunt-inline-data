@@ -58,7 +58,7 @@ module.exports = function(grunt) {
             }
         },
         // Configuration to be run (and then tested).
-        inline_data: {
+        inlinedata: {
             dist: {
                 src: ['test/src/app.js', 'test/src/noinline.js'],
                 dest: ['tmp/']
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'cssmin', 'htmlmin' ,'inline_data', 'clean:dist']);
+    grunt.registerTask('test', ['clean', 'cssmin', 'htmlmin' ,'inlinedata', 'clean:dist']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);
