@@ -7,74 +7,65 @@
  */
 
 'use strict';
+var path = require('path');
+var chalk = require('chalk');
 
 module.exports = function(grunt) {
-
-    var path = require('path');
-
-    // Please see the Grunt documentation for more information regarding task
-    // creation: http://gruntjs.com/creating-tasks
-
-    grunt.registerMultiTask('inlinedata', 'inline data in any file', function() {
-        // Merge task-specific and/or target-specific options with these defaults.
-        var files = this.filesSrc,
-            options = this.options({
-                punctuation: '.',
-                separator: ', '
-            }),
-            dest = this.data.dest;
-
-        // Iterate over all specified file groups.
-        files.forEach(function (filepath) {
-            var fileType = path.extname(filepath).replace(/^\./, ''),
-                fileContent = grunt.file.read(filepath),
-                destFile = getPathToDestination(filepath, dest);
-
-            grunt.log.write('Processing ' + filepath + '...');
-
-            fileContent = inline(filepath, fileContent);
-
-            grunt.file.write(destFile, fileContent);
-            grunt.log.ok();
-        });
-    });
-
-    // from grunt-text-replace.js in grunt-text-replace
-    function getPathToDestination(pathToSource, pathToDestinationFile) {
-        var isDestinationDirectory = (/\/$/).test(pathToDestinationFile);
-        var fileName = path.basename(pathToSource);
-        var newPathToDestination;
-        if (typeof pathToDestinationFile === 'undefined') {
-            newPathToDestination = pathToSource;
-        } else {
-            newPathToDestination = pathToDestinationFile + (isDestinationDirectory ? fileName : '');
-        }
-        return newPathToDestination;
-    }
-
     /**
      * @describe getinline message
      * @param {filepath}
-     * @param {fileContent}
-     * @return {fileContent}
+     * @param {source}
+     * @return {source}
      */
-    function inline(filepath, fileContent){
-        var flags = fileContent.match(/__inline\(([\s\S]*?)\)/g),
-            inlinefileDir = path.dirname(filepath);
-
+    var inliner = function(source, filepath){
+        var flags = source.match(/__inline\(([\s\S]*?)\)/g);
         if(flags && flags.length > 0){
-
             flags.forEach(function (fa){
                 var inlineFile = fa.match(/\(([\s\S]*?)\)/)[1];
-
-                var inlineContent = grunt.file.read(inlinefileDir + '/' + inlineFile);
-
-                fileContent = fileContent.replace(fa, inlineContent);
-
+                var inlineContent = grunt.file.read(filepath + '/' + inlineFile);
+                source = source.replace(fa, inlineContent);
             });
         }
+        return source;
+    };
 
-        return fileContent;
-    }
 
+    grunt.registerMultiTask('inlinedata', 'inline data in any file', function() {
+        
+        var options = this.options({
+            });
+
+        this.files.forEach(function (file) {
+
+            var valid = file.src.filter(function (filepath) {
+                // Warn on and remove invalid source files (if nonull was set).
+                if (!grunt.file.exists(filepath)) {
+                    grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
+                    return false;
+                } else {
+                    return true;
+                }
+
+            });
+
+            var inner = valid.map(function (file) {
+                var src = grunt.file.read(file);
+
+                options.relativeTo = path.dirname(file);
+                return inliner(src, options.relativeTo);
+            });
+
+            if (inner.length === 0) {
+                return grunt.log.warn('Destination not written because inner filer was empty.');
+            }
+
+            if (options.banner) {
+                inner = options.banner + grunt.util.linefeed + inner;
+            }
+
+            grunt.file.write(file.dest, inner);
+            grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created: ');
+        });
+        
+    });
 };
