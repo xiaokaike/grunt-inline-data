@@ -1,9 +1,9 @@
 # grunt-inline-data
 
-
 > inline data in file
 
-*Issues with the output should be reported on the inline-data [issue tracker](https://github.com/xiaokaike/grunt-inline-data/issues).*
+
+*Issues with the output should be reported on the grunt-inline-data [issue tracker](https://github.com/xiaokaike/grunt-inline-data/issues).*
 
 
 ## Getting Started
