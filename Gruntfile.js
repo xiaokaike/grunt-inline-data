@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         cssmin: {
             minify: {
                 expand: true,
-                cwd: 'test/fixtures/',
+                cwd: 'test/fixtures/inlinesrc/',
                 src: ['*.css'],
                 dest: 'test/dist/',
                 ext: '.min.css'
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     flatten: false,
-                    cwd: 'test/fixtures/',
+                    cwd: 'test/fixtures/inlinesrc/',
                     src: ['*.tpl'],
                     dest: 'test/dist/',
                     ext: '.min.tpl'
@@ -59,12 +59,19 @@ module.exports = function(grunt) {
         },
         // Configuration to be run (and then tested).
         inlinedata: {
-            dist: {
+            injs: {
                 expand: true,
                 cwd: 'test/fixtures/',
                 src: ['*.js'],
                 dest: 'tmp/',
                 ext: '.inline.js'
+            },
+            inhtml: {
+                expand: true,
+                cwd: 'test/fixtures/',
+                src: ['*.html'],
+                dest: 'tmp/',
+                ext: '.inline.html'
             }
         },
 
