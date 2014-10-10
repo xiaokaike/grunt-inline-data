@@ -57,7 +57,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        // Configuration to be run (and then tested).
         inlinedata: {
             injs: {
                 expand: true,
