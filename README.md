@@ -62,7 +62,7 @@ var jsonData = __inline(inlinesrc/data.json);
 ```
 
 
-after app.inline.js
+after grunt buid : app.inline.js
 
 ```js
  
@@ -90,7 +90,7 @@ body{color:#fff;margin:0;padding:0}.box{color:#eee;display:block}
 
 ## Release History
 
- * 2014-09-27   v0.0.2   
+ * 2014-09-27   v0.0.5   
  
 
 ---
